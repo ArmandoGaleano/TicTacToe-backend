@@ -1,9 +1,13 @@
+require('dotenv/config');
 var admin = require("firebase-admin");
-
-var serviceAccount = require('../serviceAccountKey.json');
+var serviceAccount = process.env.FIREBASE_CONFIG;
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert({
+    projectId: process.env.PROJECT_ID,
+    clientEmail: process.env.CLIENT_EMAIL,
+    privateKey: process.env.PRIVATE_KEY.replace(/\\n/g, '\n')
+  }),
   databaseURL: "https://tic-tac-toe-c52ff.firebaseio.com"
 });
 

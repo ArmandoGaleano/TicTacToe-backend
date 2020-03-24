@@ -4,14 +4,12 @@ const db = require('./modules/FirebaseDB');
 const Game = require('./modules/Game');
 const points = require('./modules/updatePoints');
 const cors = require('cors');
-
-
 const app = express();
 
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
-app.use(cors({}))
+app.use(cors())
 app.use(express.static(path.join(__dirname, 'client/public')));
 app.set('views', path.join(__dirname, 'client/public'));
 app.engine('html', require('ejs').renderFile);
