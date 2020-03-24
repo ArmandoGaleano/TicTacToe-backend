@@ -14,8 +14,9 @@ app.use(express.static(path.join(__dirname, 'client/public')));
 app.set('views', path.join(__dirname, 'client/public'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html'); 
+
 app.use((res, res) => {
-    res.setHeader('Access-Control-Allow-Origin', "https://tictactoefrontend.herokuapp.com/")
+    res.setHeader('Access-Control-Allow-Origin', "*")
 })
 io.on('connection', socket => {
     const objGame = new Game(socket);
