@@ -38,6 +38,7 @@ class Game {
                 8: "",
             }
         })
+        this.haveAWinner = {};
     }
     checkWinner(game, gameID) {
         const toWin = [
